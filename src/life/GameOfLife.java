@@ -1,8 +1,23 @@
 package life;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
+
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JToggleButton;
+import javax.swing.Timer;
 
 interface Callback {
     void action(int alive, int generation);
@@ -49,7 +64,7 @@ class MatrixPanel extends JPanel {
                     c = 0;
                 }
                 if (arr[r][c] == 'O') {
-                    g.setColor(Color.BLACK);
+                    g.setColor(new Color(116, 255, 0));
                 } else {
                     g.setColor(Color.GRAY);
                 }
@@ -83,6 +98,7 @@ public class GameOfLife extends JFrame {
     private final JToggleButton pauseButton;
 
     public GameOfLife() {
+        setTitle("Conway's Game Of Life");
 
         // Panels
         leftPanel = new JPanel();
@@ -98,7 +114,7 @@ public class GameOfLife extends JFrame {
         pauseButton.setName("PlayToggleButton");
 
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.PAGE_AXIS));
-
+        leftPanel.setBackground(new Color(197, 203, 227 ));
         leftPanel.add(Box.createRigidArea(new Dimension(10, 10)));
         leftPanel.add(pauseButton);
         leftPanel.add(Box.createRigidArea(new Dimension(10, 10)));
