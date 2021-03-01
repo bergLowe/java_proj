@@ -89,11 +89,11 @@ public class GameOfLife extends JFrame {
         rightPanel = new JPanel();
 
         // Buttons
-        Icon restartIcon = new ImageIcon("D:\\Documents\\Documents\\Game of Life\\Game of Life\\task\\src\\resources\\icons8-restart-30.png");
+        Icon restartIcon = new ImageIcon(".\\resources\\icons8-restart-30.png");
         restartButton = new JButton(restartIcon);
         restartButton.setName("ResetButton");
 
-        Icon pauseIcon = new ImageIcon("D:\\Documents\\Documents\\Game of Life\\Game of Life\\task\\src\\resources\\icons8-resume-button-30.png");
+        Icon pauseIcon = new ImageIcon(".\\resources\\icons8-resume-button-30.png");
         pauseButton = new JToggleButton(pauseIcon);
         pauseButton.setName("PlayToggleButton");
 
