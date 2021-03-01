@@ -116,7 +116,7 @@ class GameOfLifeSetup implements Generation {
 
     private void setGrid() {
         for (int i = 0; i < this.length; i++) {
-            for (int j = 0; j < this.length; j++) {
+            for (int j = 0; j < this.length; j++) { 
                 if (this.rand.nextBoolean()) {
                     this.grid[i][j] = 'O';
                 } else {

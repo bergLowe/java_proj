@@ -16,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSlider;
 import javax.swing.JToggleButton;
 import javax.swing.Timer;
 
@@ -32,7 +33,7 @@ class MatrixPanel extends JPanel {
     public Timer timer;
 
     public MatrixPanel() {
-        image = new BufferedImage(300,300,BufferedImage.TYPE_INT_RGB);
+        image = new BufferedImage(300, 300, BufferedImage.TYPE_INT_RGB);
         timer = new Timer(0, ae -> createImage(image));
         timer.setDelay(500);
         timer.start();
@@ -96,6 +97,7 @@ public class GameOfLife extends JFrame {
     private JLabel generationLabel;
     private final JButton restartButton;
     private final JToggleButton pauseButton;
+    private final JSlider slider;
 
     public GameOfLife() {
         setTitle("Conway's Game Of Life");
@@ -113,12 +115,22 @@ public class GameOfLife extends JFrame {
         pauseButton = new JToggleButton(pauseIcon);
         pauseButton.setName("PlayToggleButton");
 
+        slider = new JSlider(500, 2000, 1500);
+        slider.setMaximumSize(new Dimension(400, 50));
+        slider.setPaintTicks(true);
+        slider.setPaintTrack(true);
+        slider.setPaintLabels(true);
+        slider.setSnapToTicks(true);
+        slider.setMajorTickSpacing(500);
+
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.PAGE_AXIS));
         leftPanel.setBackground(new Color(197, 203, 227 ));
         leftPanel.add(Box.createRigidArea(new Dimension(10, 10)));
         leftPanel.add(pauseButton);
         leftPanel.add(Box.createRigidArea(new Dimension(10, 10)));
         leftPanel.add(restartButton);
+        leftPanel.add(Box.createRigidArea(new Dimension(10, 10)));
+        leftPanel.add(slider);
         
         updateLabel(0);
 
@@ -146,6 +158,11 @@ public class GameOfLife extends JFrame {
             matrixPanel.generation = 0;
             matrixPanel.gol = new GameOfLifeSetup();
             matrixPanel.timer.start();
+        });
+
+        slider.addChangeListener(e -> {
+            JSlider temp = (JSlider) e.getSource();
+            matrixPanel.timer.setDelay(temp.getValue());
         });
 
         rightPanel.add(matrixPanel);
