@@ -58,12 +58,12 @@ class MatrixPanel extends JPanel {
 
         int sqW = cellSize;
         for (int i = 0; i < cellSize * gol.getLength(); i += sqW) {
-            if (r == 20) {
+            if (r == gol.getLength()) {
                 r = 0;
             }
-            int sqH = 15;
+            int sqH = cellSize;
             for (int j = 0; j < cellSize * gol.getLength(); j += sqH) {
-                if (c == 20) {
+                if (c == gol.getLength()) {
                     c = 0;
                 }
                 if (arr[r][c] == 'O') {
