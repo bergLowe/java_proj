@@ -105,10 +105,12 @@ interface Generation {
 class GameOfLifeSetup implements Generation {
     private char[][] grid;
     final private int length;
-    final Random rand;
+    final private Random rand;
+    final private int cellSize;
 
     GameOfLifeSetup() {
-        this.length = 20;
+        this.length = 30;
+        this.cellSize = 15;
         this.grid = new char[this.length][this.length];
         this.rand = new Random();
         setGrid();
@@ -162,7 +164,14 @@ class GameOfLifeSetup implements Generation {
     public char[][] getGrid() {
         return this.grid;
     }
+    
+    public int getLength() {
+        return this.length;
+    }
 
+    public int getCellSize() {
+        return this.cellSize;
+    }
 }
 
 public class Main {

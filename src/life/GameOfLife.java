@@ -31,13 +31,15 @@ class MatrixPanel extends JPanel {
     private Callback onUpdate;
     public int generation;
     public Timer timer;
+    public int cellSize;
 
     public MatrixPanel() {
-        image = new BufferedImage(300, 300, BufferedImage.TYPE_INT_RGB);
+        this.gol = new GameOfLifeSetup();
+        cellSize = gol.getCellSize();
+        image = new BufferedImage(cellSize * gol.getLength(), cellSize * gol.getLength(), BufferedImage.TYPE_INT_RGB);
         timer = new Timer(0, ae -> createImage(image));
         timer.setDelay(500);
         timer.start();
-        this.gol = new GameOfLifeSetup();
         this.generation = 0;
     }
 
@@ -54,13 +56,13 @@ class MatrixPanel extends JPanel {
         onUpdate.action(this.gol.getAlive(), generation);
         this.generation += 1;
 
-        int sqW = 15;
-        for (int i = 0; i < 300; i += sqW) {
+        int sqW = cellSize;
+        for (int i = 0; i < cellSize * gol.getLength(); i += sqW) {
             if (r == 20) {
                 r = 0;
             }
             int sqH = 15;
-            for (int j = 0; j < 300; j += sqH) {
+            for (int j = 0; j < cellSize * gol.getLength(); j += sqH) {
                 if (c == 20) {
                     c = 0;
                 }
@@ -135,7 +137,7 @@ public class GameOfLife extends JFrame {
         updateLabel(0);
 
         MatrixPanel matrixPanel = new MatrixPanel();
-        matrixPanel.setPreferredSize(new Dimension(300, 300));
+        matrixPanel.setPreferredSize(new Dimension(matrixPanel.cellSize * matrixPanel.gol.getLength(), matrixPanel.cellSize * matrixPanel.gol.getLength()));
 
         // Setting up anonymous method using lambda because
         // there is only one method to handle in Interface.
