@@ -115,7 +115,7 @@ public class GameOfLife extends JFrame {
         pauseButton = new JToggleButton(pauseIcon);
         pauseButton.setName("PlayToggleButton");
 
-        slider = new JSlider(500, 2000, 1500);
+        slider = new JSlider(500, 2000, 500);
         slider.setMaximumSize(new Dimension(400, 50));
         slider.setPaintTicks(true);
         slider.setPaintTrack(true);
@@ -124,7 +124,7 @@ public class GameOfLife extends JFrame {
         slider.setMajorTickSpacing(500);
 
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.PAGE_AXIS));
-        leftPanel.setBackground(new Color(197, 203, 227 ));
+        leftPanel.setBackground(new Color(197, 203, 227));
         leftPanel.add(Box.createRigidArea(new Dimension(10, 10)));
         leftPanel.add(pauseButton);
         leftPanel.add(Box.createRigidArea(new Dimension(10, 10)));
