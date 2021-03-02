@@ -156,7 +156,7 @@ public class GameOfLife extends JFrame {
 
         restartButton.addActionListener(e -> {
             matrixPanel.timer.stop();
-            matrixPanel.image = new BufferedImage(300, 300, BufferedImage.TYPE_INT_RGB);
+            matrixPanel.image = new BufferedImage(matrixPanel.cellSize * matrixPanel.gol.getLength(), matrixPanel.cellSize * matrixPanel.gol.getLength(), BufferedImage.TYPE_INT_RGB);
             matrixPanel.generation = 0;
             matrixPanel.gol = new GameOfLifeSetup();
             matrixPanel.timer.start();
