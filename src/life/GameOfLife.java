@@ -137,7 +137,7 @@ public class GameOfLife extends JFrame {
         pauseButton.setToolTipText("Pause");
 
         // Slider
-        slider = new JSlider(500, 2000, 500);
+        slider = new JSlider(0, 2000, 500);
         slider.setMaximumSize(new Dimension(400, 50));
         slider.setPaintTicks(true);
         slider.setPaintTrack(true);

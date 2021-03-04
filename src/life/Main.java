@@ -115,8 +115,11 @@ class GameOfLifeSetup implements Generation {
     final private Random rand;
     final private int cellSize; // Width and Height of each cell in GUI
 
+    // Change Grid Size or Change cell size here
+    // For grid -> length
+    // For cell size -> cellSize
     GameOfLifeSetup() {
-        this.length = 20;
+        this.length = 30;
         if (this.length == 0) {
             try {
                 throw new Exception("Length of Matrix is 0");
@@ -124,7 +127,7 @@ class GameOfLifeSetup implements Generation {
                 System.out.println("Exception: " + e.getMessage());
             }
         }
-        this.cellSize = 15;
+        this.cellSize = 20;
         this.grid = new char[this.length][this.length];
         this.rand = new Random();
         setGrid();
